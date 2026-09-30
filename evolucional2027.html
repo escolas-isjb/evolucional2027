@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronograma de Simulados Evolucional ENEM 2027 - 3ª Série</title>
+<style>
+  :root {
+    --accent: #1d4ed8;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .header-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e3a8a 100%);
+    color: #ffffff;
+    padding: 2.25rem 1.5rem 3.5rem;
+  }
+  .header-content {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .badge-exec {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #e0f2fe;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  .header-title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+  }
+  .header-subtitle {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    max-width: 860px;
+    margin: 0;
+  }
+  .btn-action {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: all 0.2s ease;
+  }
+  .btn-action:hover { background: #ffffff; color: #0f172a; }
+  .main-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+  }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    margin-top: -1.5rem;
+    position: relative;
+    z-index: 10;
+  }
+  .tab-btn {
+    padding: 12px 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow);
+  }
+  .tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .tab-btn:hover:not(.active) { background: #f1f5f9; }
+  .tab-content { display: none; animation: fadeIn 0.4s; }
+  .tab-content.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.25rem;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--accent);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px -4px rgba(15, 23, 42, 0.09); }
+  .kpi-card.emerald { border-top-color: #047857; }
+  .kpi-card.amber { border-top-color: #b45309; }
+  .kpi-header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+  .kpi-primary {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+  .kpi-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.35; }
+  .section-title-wrap {
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-caption { font-size: 0.85rem; color: var(--text-muted); }
+  .aviso {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 5px solid #f59e0b;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow);
+  }
+  .aviso-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #92400e;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .aviso ul { margin: 0 0 0 1.25rem; padding: 0; }
+  .aviso li { margin-bottom: 0.75rem; line-height: 1.5; }
+  .aviso li:last-child { margin-bottom: 0; }
+  .card-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  th {
+    text-align: left;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    padding: 0.9rem 1rem;
+    border-bottom: 2px solid var(--border);
+    background: #f8fafc;
+    white-space: nowrap;
+  }
+  td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  tbody tr:hover { background: color-mix(in srgb, var(--accent) 4%, transparent); }
+  tbody tr:last-child td { border-bottom: none; }
+  .badge-ciclo {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    background: #f3e8ff;
+    color: #6f42c1;
+    border: 1px solid #e9d5ff;
+  }
+  .badge-col {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    margin: 2px 4px 2px 0;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .badge-col:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .badge-col.a { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+  .badge-col.b { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+  .badge-col.c { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .badge-todos {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .badge-todos:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .status-sim { color: #047857; font-weight: 700; }
+  .status-nao { color: #b91c1c; font-weight: 700; }
+  .linha-a { background: #f0fdf4; }
+  .linha-b { background: #fffbeb; }
+  .linha-c { background: #eff6ff; }
+  .observacoes-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .observacao-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 4px solid #64748b;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  .observacao-item:hover { background: #f1f5f9; }
+  .observacao-item.destaque {
+    background: #fef2f2;
+    border-left-color: #b91c1c;
+    border-color: #fecaca;
+  }
+  .observacao-item.destaque:hover { background: #fee2e2; }
+  .observacao-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  .observacao-item.destaque .observacao-num { background: #b91c1c; }
+  .observacao-texto {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .observacao-texto strong { color: var(--text); }
+  .imagem-box {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .imagem-box img {
+    width: 100%;
+    max-width: 1400px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    cursor: zoom-in;
+  }
+  .dica-zoom {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, .92);
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+  }
+  .lightbox.aberto { display: flex; }
+  .lightbox-barra {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+  }
+  .lightbox-barra button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #1a3c6e;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .lightbox-barra button.ativo { background: #2e9e4f; }
+  .lightbox-area {
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 12px 12px;
+  }
+  .lightbox-area img { border-radius: 4px; }
+  .lightbox.ajustar .lightbox-area img { max-width: 96vw; max-height: 88vh; object-fit: contain; }
+  .lightbox.real .lightbox-area img { max-width: none; max-height: none; }
+  .dashboard-footer {
+    margin-top: 3rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .footer-title {
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+  }
+
+  /* ===== PAINEL LATERAL DE COLÉGIOS ===== */
+  .painel-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+  }
+  .painel-overlay.aberto {
+    display: block;
+    animation: fadeIn 0.2s ease;
+  }
+  .painel-lateral {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 400px;
+    max-width: 90vw;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -8px 0 24px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .painel-lateral.aberto { right: 0; }
+  .painel-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+  }
+  .painel-header h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+  }
+  .painel-header .painel-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    margin-top: 6px;
+  }
+  .painel-fechar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .painel-fechar:hover { background: #e2e8f0; color: var(--text); }
+  .painel-body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .painel-colegio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+  }
+  .painel-colegio:hover { background: #f1f5f9; transform: translateX(2px); }
+  .painel-colegio-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  .painel-colegio-info { flex: 1; }
+  .painel-colegio-nome {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.25;
+  }
+  .painel-colegio-ciclos {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .header-title { font-size: 1.35rem; }
+    .kpi-primary { font-size: 1.35rem; }
+    th, td { padding: 0.65rem 0.6rem; font-size: 0.78rem; }
+    .badge-ciclo, .badge-col, .badge-todos { font-size: 0.68rem; padding: 2px 8px; }
+    .tab-btn { padding: 10px 16px; font-size: 0.8rem; }
+  }
+  @media print {
+    @page { size: A4 landscape; margin: 5mm; }
+    body { background: #fff !important; color: #000 !important; font-size: 7.5pt; line-height: 1.15; }
+    .btn-action, .no-print, .tabs, .dashboard-footer, .aviso, .section-caption,
+    .painel-overlay, .painel-lateral { display: none !important; }
+    .header-banner {
+      background: #f0f0f0 !important; color: #000 !important;
+      padding: 4px 8px !important; border-bottom: 1px solid #000;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .header-title { font-size: 11pt !important; color: #000 !important; margin: 0 !important; line-height: 1.1 !important; }
+    .header-subtitle { font-size: 6.5pt !important; color: #333 !important; margin: 0 !important; }
+    .badge-exec { display: none !important; }
+    .main-wrap { padding: 0 !important; max-width: 100% !important; margin: 0 !important; }
+    .kpi-row { margin: 4px 0 !important; gap: 4px !important; grid-template-columns: repeat(3, 1fr) !important; }
+    .kpi-card { padding: 3px 6px !important; box-shadow: none !important; border: 1px solid #999 !important; border-top-width: 3px !important; page-break-inside: avoid; }
+    .kpi-header { font-size: 6pt !important; margin-bottom: 1px !important; }
+    .kpi-primary { font-size: 9pt !important; margin-bottom: 1px !important; }
+    .kpi-desc { font-size: 6pt !important; line-height: 1.1 !important; }
+    .section-title-wrap { margin: 4px 0 3px 0 !important; padding-bottom: 1px !important; page-break-after: avoid; border-bottom: 1px solid #999 !important; }
+    .section-title { font-size: 9pt !important; }
+    .card-panel { padding: 0 !important; box-shadow: none !important; border: none !important; margin-bottom: 6px !important; page-break-inside: avoid; }
+    table { font-size: 7pt !important; page-break-inside: avoid; }
+    th { font-size: 6pt !important; padding: 2px 4px !important; background: #e0e0e0 !important; color: #000 !important; border: 1px solid #999 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    td { padding: 2px 4px !important; border: 1px solid #ccc !important; line-height: 1.1 !important; }
+    .badge-ciclo, .badge-col, .badge-todos { font-size: 5.5pt !important; padding: 1px 4px !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .linha-a, .linha-b, .linha-c { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .imagem-box { padding: 4px !important; border: 1px solid #999 !important; }
+    .imagem-box img { max-width: 100% !important; max-height: 100mm !important; object-fit: contain; }
+    .dica-zoom { display: none !important; }
+    .tab-content { display: block !important; page-break-inside: avoid !important; }
+    .tab-content:not(.active) { display: none !important; }
+    .secao, .card-panel, .kpi-row, table, tr { page-break-inside: avoid !important; }
+    .observacoes-lista { gap: 4px !important; }
+    .observacao-item { padding: 4px 8px !important; border-radius: 4px !important; }
+    .observacao-num { width: 18px !important; height: 18px !important; font-size: 8pt !important; }
+    .observacao-texto { font-size: 7pt !important; line-height: 1.15 !important; }
+    .observacao-item.destaque { background: #fee2e2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header-banner">
+  <div class="header-content">
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 100%;">
+      <span class="badge-exec">COMUNICADO 012/2026 - EVOLUCIONAL 3ª SÉRIE 2027</span>
+      <h1 class="header-title">Cronograma de Simulados Evolucional ENEM 2027</h1>
+      <p class="header-subtitle">Planejamento estratégico de ciclos avaliativos para a 3ª Série do Ensino Médio. Regras de aplicação, alocação por colégio e calendário oficial consolidados para tomada de decisão.</p>
+    </div>
+    <div class="header-actions no-print">
+      <button class="btn-action" onclick="window.print()">Imprimir / Salvar PDF</button>
+    </div>
+  </div>
+</header>
+
+<main class="main-wrap">
+
+  <div class="tabs no-print">
+    <button class="tab-btn active" onclick="mostrarAba('cronograma', this)">Cronograma e Regras</button>
+    <button class="tab-btn" onclick="mostrarAba('oficial', this)">Evolucional Oficial</button>
+  </div>
+
+  <!-- ===== ABA 1: CRONOGRAMA ===== -->
+  <div id="cronograma" class="tab-content active">
+
+    <div class="kpi-row">
+      <div class="kpi-card emerald">
+        <div class="kpi-header">Colégios com 4 Ciclos</div>
+        <div class="kpi-primary">Colégios A</div>
+        <div class="kpi-desc">Apenas postergar, sem mudar de ciclo.</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-header">Colégios com 6 Ciclos</div>
+        <div class="kpi-primary">Colégios B</div>
+        <div class="kpi-desc">Podem trocar ciclo, exceto base padrão de 4.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-header">Colégios com 8 Ciclos</div>
+        <div class="kpi-primary">Colégios C</div>
+        <div class="kpi-desc">Apenas postergar, pois já usam todos os ciclos.</div>
+      </div>
+    </div>
+
+    <div class="aviso">
+      <div class="aviso-title">⚠️ Atenção</div>
+      <ul>
+        <li><span class="badge-col a">4 Ciclos (Colégios A)</span> Podem apenas <strong>postergar a aplicação</strong>, sem mudar de ciclo.</li>
+        <li><span class="badge-col b">6 Ciclos (Colégios B)</span> Podem <strong>trocar o ciclo</strong>, desde que não seja a base padrão de 4 (<span class="badge-col a">Colégio A</span>).</li>
+        <li><span class="badge-col c">8 Ciclos (Colégios C)</span> Podem apenas <strong>postergar a aplicação</strong>, pois já utilizam todos os ciclos evolucionais.</li>
+      </ul>
+    </div>
+
+    <div class="section-title-wrap">
+      <h3 class="section-title">1. Calendário Padrão de Ciclos</h3>
+      <span class="section-caption">Datas oficiais Evolucional e colégios participantes — clique nas tags para ver a lista</span>
+    </div>
+
+    <div class="card-panel" style="margin-bottom: 2.5rem;">
+      <table>
+        <thead>
+          <tr><th>Ciclo</th><th>Data Oficial Evolucional</th><th>Colégios</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 1</span></td>
+            <td>20/02 e 27/02</td>
+            <td><span class="badge-todos" onclick="abrirPainel('todos')">✅ TODOS OS COLÉGIOS</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 2</span></td>
+            <td>13/03 e 20/03</td>
+            <td><span class="badge-col c" onclick="abrirPainel('c')">COLÉGIOS C</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 3</span></td>
+            <td>10/04 e 17/04</td>
+            <td><span class="badge-col b" onclick="abrirPainel('b')">COLÉGIOS B</span> <span class="badge-col c" onclick="abrirPainel('c')">COLÉGIOS C</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 4</span></td>
+            <td>15/05 e 22/05</td>
+            <td><span class="badge-todos" onclick="abrirPainel('todos')">✅ TODOS OS COLÉGIOS</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 5</span></td>
+            <td>19/06 e 26/06</td>
+            <td><span class="badge-col b" onclick="abrirPainel('b')">COLÉGIOS B</span> <span class="badge-col c" onclick="abrirPainel('c')">COLÉGIOS C</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 6</span></td>
+            <td>31/07 e 07/08</td>
+            <td><span class="badge-col c" onclick="abrirPainel('c')">COLÉGIOS C</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 7</span></td>
+            <td>21/08 e 28/08</td>
+            <td><span class="badge-todos" onclick="abrirPainel('todos')">✅ TODOS OS COLÉGIOS</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge-ciclo">Ciclo 8</span></td>
+            <td>25/09 e 02/10</td>
+            <td><span class="badge-todos" onclick="abrirPainel('todos')">✅ TODOS OS COLÉGIOS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title-wrap">
+      <h3 class="section-title">2. O que cada colégio pode fazer</h3>
+      <span class="section-caption">Regras de aplicação, ciclos alocados e observações por colégio</span>
+    </div>
+
+    <div class="card-panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Colégio</th>
+            <th>Qtd. de Ciclos</th>
+            <th>Ciclos Alocados</th>
+            <th>Pode Postergar?</th>
+            <th>Pode Trocar de Ciclo?</th>
+            <th>Observação Importante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="linha-a">
+            <td><strong>CAMPOS, RESENDE, Núcleo Bandeirante</strong><br><span class="badge-col a" onclick="abrirPainel('a')">Colégios A</span></td>
+            <td>4 Ciclos</td>
+            <td>1, 4, 7, 8</td>
+            <td class="status-sim">✅ Sim</td>
+            <td class="status-nao">❌ Não</td>
+            <td>Mantém a base, apenas adia a data.</td>
+          </tr>
+          <tr class="linha-b">
+            <td><strong>RO, SR, ARAXÁ</strong><br><span class="badge-col b" onclick="abrirPainel('b')">Colégios B</span></td>
+            <td>6 Ciclos</td>
+            <td>1, 3, 4, 5, 7, 8</td>
+            <td class="status-sim">✅ Sim</td>
+            <td class="status-sim">✅ Sim</td>
+            <td>Pode trocar de ciclo, exceto os que são base padrão de 4 (Colégios A).</td>
+          </tr>
+          <tr class="linha-c">
+            <td><strong>JC e NSV</strong><br><span class="badge-col c" onclick="abrirPainel('c')">Colégios C</span></td>
+            <td>8 Ciclos</td>
+            <td>1, 2, 3, 4, 5, 6, 7, 8</td>
+            <td class="status-sim">✅ Sim</td>
+            <td class="status-nao">❌ Não</td>
+            <td>Já usam todos os ciclos. Só adiam a aplicação.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title-wrap" style="margin-top: 2.5rem;">
+      <h3 class="section-title">3. Observações Gerais</h3>
+      <span class="section-caption">Orientações importantes para aplicação das avaliações</span>
+    </div>
+
+    <div class="card-panel" style="margin-bottom: 2rem;">
+      <div class="observacoes-lista">
+        <div class="observacao-item">
+          <div class="observacao-num">1</div>
+          <div class="observacao-texto">
+            <strong>Consenso entre colégios da mesma cidade:</strong> Colégios localizados na mesma cidade devem entrar em consenso das datas de aplicação serem iguais, para evitarem vazamento de gabarito.
+          </div>
+        </div>
+        <div class="observacao-item destaque">
+          <div class="observacao-num">2</div>
+          <div class="observacao-texto">
+            <strong>NÃO é possível aplicar antes da data oficial da Evolucional:</strong> Antecipar a aplicação acarreta <strong>multas contratuais</strong>. Respeite rigorosamente o calendário oficial.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== ABA 2: EVOLUCIONAL OFICIAL ===== -->
+  <div id="oficial" class="tab-content">
+    <div class="section-title-wrap">
+      <h3 class="section-title">Evolucional Oficial</h3>
+      <span class="section-caption">Documento oficial de referência</span>
+    </div>
+    <div class="imagem-box">
+      <img id="imgOficial" src="evolucional-oficial.png" alt="Evolucional Oficial" onclick="abrirLightbox()">
+      <p class="dica-zoom">🔍 Clique na imagem para ampliar em tela cheia.</p>
+    </div>
+  </div>
+
+  <footer class="dashboard-footer">
+    <div class="footer-title">Sobre este Cronograma</div>
+    <p>Documento gerado para planejamento estratégico de simulados ENEM da 3ª série Evolucional 2027. As regras de aplicação e a alocação de ciclos foram definidas para otimizar a aplicação das avaliações Evolucional, respeitando a base padrão de 4 ciclos e as particularidades de cada colégio. Em caso de dúvidas, entre em contato com Setor de Escolas CI.</p>
+  </footer>
+
+</main>
+
+<!-- ===== LIGHTBOX (IMAGEM AMPLIADA) ===== -->
+<div id="lightbox" class="lightbox ajustar" onclick="if(event.target === this) fecharLightbox();">
+  <div class="lightbox-barra">
+    <button id="btnAjustar" class="ativo" onclick="modoLightbox('ajustar')">Ajustar à tela</button>
+    <button id="btnReal" onclick="modoLightbox('real')">Tamanho real (100%)</button>
+    <button onclick="fecharLightbox()">✕ Fechar</button>
+  </div>
+  <div class="lightbox-area">
+    <img id="lightboxImg" src="evolucional-oficial.png" alt="Evolucional Oficial ampliado">
+  </div>
+</div>
+
+<!-- ===== PAINEL LATERAL DE COLÉGIOS ===== -->
+<div id="painelOverlay" class="painel-overlay" onclick="fecharPainel()"></div>
+<aside id="painelLateral" class="painel-lateral">
+  <div class="painel-header">
+    <div>
+      <h3 id="painelTitulo">Colégios</h3>
+      <span id="painelBadge" class="painel-badge">—</span>
+    </div>
+    <button class="painel-fechar" onclick="fecharPainel()">✕</button>
+  </div>
+  <div class="painel-body" id="painelBody"></div>
+</aside>
+
+<script>
+  // ===== NAVEGAÇÃO DE ABAS =====
+  function mostrarAba(id, botao) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    botao.classList.add('active');
+  }
+
+  // ===== LIGHTBOX =====
+  function abrirLightbox() {
+    document.getElementById('lightbox').classList.add('aberto');
+  }
+  function fecharLightbox() {
+    document.getElementById('lightbox').classList.remove('aberto');
+  }
+  function modoLightbox(modo) {
+    const lb = document.getElementById('lightbox');
+    lb.classList.toggle('ajustar', modo === 'ajustar');
+    lb.classList.toggle('real', modo === 'real');
+    document.getElementById('btnAjustar').classList.toggle('ativo', modo === 'ajustar');
+    document.getElementById('btnReal').classList.toggle('ativo', modo === 'real');
+  }
+
+  // ===== BASE DE DADOS DOS COLÉGIOS =====
+  const colegios = {
+    a: {
+      titulo: 'Colégios A — 4 Ciclos',
+      badge: 'Colégios A',
+      badgeClass: 'badge-col a',
+      lista: [
+        { nome: 'CAMPOS, RESENDE, Núcleo Bandeirante', ciclos: '1, 4, 7, 8' }
+      ]
+    },
+    b: {
+      titulo: 'Colégios B — 6 Ciclos',
+      badge: 'Colégios B',
+      badgeClass: 'badge-col b',
+      lista: [
+        { nome: 'RO, SR, ARAXÁ', ciclos: '1, 3, 4, 5, 7, 8' }
+      ]
+    },
+    c: {
+      titulo: 'Colégios C — 8 Ciclos',
+      badge: 'Colégios C',
+      badgeClass: 'badge-col c',
+      lista: [
+        { nome: 'JC e NSV', ciclos: '1, 2, 3, 4, 5, 6, 7, 8' }
+      ]
+    },
+    todos: {
+      titulo: 'Todos os Colégios',
+      badge: '✅ TODOS',
+      badgeClass: 'badge-todos',
+      lista: [
+        { nome: 'CAMPOS, RESENDE, Núcleo Bandeirante', ciclos: '1, 4, 7, 8' },
+        { nome: 'RO, SR, ARAXÁ', ciclos: '1, 3, 4, 5, 7, 8' },
+        { nome: 'JC e NSV', ciclos: '1, 2, 3, 4, 5, 6, 7, 8' }
+      ]
+    }
+  };
+
+  // ===== ABRIR / FECHAR PAINEL =====
+  function abrirPainel(grupo) {
+    const dados = colegios[grupo];
+    if (!dados) return;
+
+    document.getElementById('painelTitulo').textContent = dados.titulo;
+    const badgeEl = document.getElementById('painelBadge');
+    badgeEl.textContent = dados.badge;
+    badgeEl.className = 'painel-badge ' + dados.badgeClass;
+
+    const body = document.getElementById('painelBody');
+    body.innerHTML = '';
+    dados.lista.forEach((col, idx) => {
+      const div = document.createElement('div');
+      div.className = 'painel-colegio';
+      div.innerHTML = `
+        <div class="painel-colegio-icon">${idx + 1}</div>
+        <div class="painel-colegio-info">
+          <div class="painel-colegio-nome">${col.nome}</div>
+          <div class="painel-colegio-ciclos">Ciclos: ${col.ciclos}</div>
+        </div>
+      `;
+      body.appendChild(div);
+    });
+
+    document.getElementById('painelOverlay').classList.add('aberto');
+    document.getElementById('painelLateral').classList.add('aberto');
+  }
+
+  function fecharPainel() {
+    document.getElementById('painelOverlay').classList.remove('aberto');
+    document.getElementById('painelLateral').classList.remove('aberto');
+  }
+
+  // Fecha painéis com ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { fecharLightbox(); fecharPainel(); }
+  });
+</script>
+</body>
+</html>
