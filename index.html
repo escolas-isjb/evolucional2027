@@ -557,7 +557,7 @@
 <header class="header-banner">
   <div class="header-content">
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 100%;">
-      <span class="badge-exec">COMUNICADO 012/2026 - EVOLUCIONAL 3ª SÉRIE 2027</span>
+      <span class="badge-exec">COMUNICADO 012/2026 - EVOLUCIONAL 2027</span>
       <h1 class="header-title">Cronograma de Simulados Evolucional ENEM 2027</h1>
       <p class="header-subtitle">Planejamento estratégico de ciclos avaliativos para a 3ª Série do Ensino Médio. Regras de aplicação, alocação por colégio e calendário oficial consolidados para tomada de decisão.</p>
     </div>
@@ -570,8 +570,8 @@
 <main class="main-wrap">
 
   <div class="tabs no-print">
-    <button class="tab-btn active" onclick="mostrarAba('cronograma', this)">Cronograma e Regras</button>
-    <button class="tab-btn" onclick="mostrarAba('oficial', this)">Evolucional Oficial</button>
+    <button class="tab-btn active" onclick="mostrarAba('cronograma', this)">Cronograma e Regras 3ª série</button>
+    <button class="tab-btn" onclick="mostrarAba('oficial', this)">9º, 1ª e 2ª série</button>
   </div>
 
   <!-- ===== ABA 1: CRONOGRAMA ===== -->
@@ -728,37 +728,82 @@
     </div>
 
   </div>
+</div>
 
-  <!-- ===== ABA 2: EVOLUCIONAL OFICIAL ===== -->
+  <!-- ===== ABA 2: 9º, 1ª E 2ª SÉRIE ===== -->
   <div id="oficial" class="tab-content">
+
+    <!-- 1. Imagem oficial Evolucional -->
     <div class="section-title-wrap">
-      <h3 class="section-title">Evolucional Oficial</h3>
-      <span class="section-caption">Documento oficial de referência</span>
+      <h3 class="section-title">1. Cronograma Oficial Evolucional</h3>
+      <span class="section-caption">Padrão de aplicação 9º, 1ª e 2ª série — clique na imagem para ampliar</span>
     </div>
-    <div class="imagem-box">
-      <img id="imgOficial" src="evolucional-oficial.png" alt="Evolucional Oficial" onclick="abrirLightbox()">
-      <p class="dica-zoom">🔍 Clique na imagem para ampliar em tela cheia.</p>
+
+    <div class="imagem-box" style="margin-bottom: 2.5rem;">
+      <img src="evolucional-oficial.png"
+           alt="Cronograma oficial Evolucional 9º, 1ª e 2ª série"
+           onclick="abrirLightbox()">
+      <p class="dica-zoom">🔍 Clique na imagem para ampliar</p>
     </div>
+
+    <!-- 2. Quadro de padrão de aplicação -->
+    <div class="section-title-wrap">
+      <h3 class="section-title">2. Padrão de Aplicação — Todos os Colégios</h3>
+      <span class="section-caption">Aplicável a TODOS os colégios (exceto os que não possuem Ensino Médio)</span>
+    </div>
+
+    <div class="card-panel" style="margin-bottom: 2.5rem;">
+      <table>
+        <thead>
+          <tr>
+            <th>Série</th>
+            <th>Quantidade de Simulados ao Ano</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="linha-a">
+            <td><strong>9º Ano EF</strong></td>
+            <td><span class="badge-todos">2 simulados ao ano</span></td>
+          </tr>
+          <tr class="linha-b">
+            <td><strong>1ª Série EM</strong></td>
+            <td><span class="badge-todos">2 simulados ao ano</span></td>
+          </tr>
+          <tr class="linha-c">
+            <td><strong>2ª Série EM</strong></td>
+            <td><span class="badge-todos">3 simulados ao ano</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. Observações Gerais (mesmas da Aba 1) -->
+    <div class="section-title-wrap">
+      <h3 class="section-title">3. Observações Gerais</h3>
+      <span class="section-caption">Orientações importantes para aplicação das avaliações</span>
+    </div>
+
+    <div class="card-panel" style="margin-bottom: 2rem;">
+      <div class="observacoes-lista">
+        <div class="observacao-item">
+          <div class="observacao-num">1</div>
+          <div class="observacao-texto">
+            <strong>Consenso entre colégios da mesma cidade:</strong> Colégios localizados na mesma cidade devem entrar em consenso das datas de aplicação serem iguais, para evitarem vazamento de gabarito.
+          </div>
+        </div>
+        <div class="observacao-item destaque">
+          <div class="observacao-num">2</div>
+          <div class="observacao-texto">
+            <strong>NÃO é possível aplicar antes da data oficial da Evolucional:</strong> Antecipar a aplicação acarreta <strong>multas contratuais</strong>. Respeite rigorosamente o calendário oficial.
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <footer class="dashboard-footer">
-    <div class="footer-title">Sobre este Cronograma</div>
-    <p>Documento gerado para planejamento estratégico de simulados ENEM da 3ª série Evolucional 2027. As regras de aplicação e a alocação de ciclos foram definidas para otimizar a aplicação das avaliações Evolucional, respeitando a base padrão de 4 ciclos e as particularidades de cada colégio. Em caso de dúvidas, entre em contato com Setor de Escolas CI.</p>
-  </footer>
-
-</main>
+  <!-- ===== FIM ABA 2 ===== -->
 
 <!-- ===== LIGHTBOX (IMAGEM AMPLIADA) ===== -->
-<div id="lightbox" class="lightbox ajustar" onclick="if(event.target === this) fecharLightbox();">
-  <div class="lightbox-barra">
-    <button id="btnAjustar" class="ativo" onclick="modoLightbox('ajustar')">Ajustar à tela</button>
-    <button id="btnReal" onclick="modoLightbox('real')">Tamanho real (100%)</button>
-    <button onclick="fecharLightbox()">✕ Fechar</button>
-  </div>
-  <div class="lightbox-area">
-    <img id="lightboxImg" src="evolucional-oficial.png" alt="Evolucional Oficial ampliado">
-  </div>
-</div>
 
 <!-- ===== PAINEL LATERAL DE COLÉGIOS ===== -->
 <div id="painelOverlay" class="painel-overlay" onclick="fecharPainel()"></div>
@@ -804,7 +849,7 @@
       badge: 'Colégios A',
       badgeClass: 'badge-col a',
       lista: [
-        { nome: 'CAMPOS, RESENDE, Núcleo Bandeirante', ciclos: '1, 4, 7, 8' }
+        { nome: 'Campos, Resende, Núcleo Bandeirante', ciclos: '1, 4, 7, 8' }
       ]
     },
     b: {
@@ -812,7 +857,7 @@
       badge: 'Colégios B',
       badgeClass: 'badge-col b',
       lista: [
-        { nome: 'RO, SR, ARAXÁ', ciclos: '1, 3, 4, 5, 7, 8' }
+        { nome: 'Região Oceânica, Santa Rosa, Araxá', ciclos: '1, 3, 4, 5, 7, 8' }
       ]
     },
     c: {
