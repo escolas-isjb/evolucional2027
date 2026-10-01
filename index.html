@@ -319,6 +319,32 @@
     color: var(--text);
   }
   .observacao-texto strong { color: var(--text); }
+    /* ===== NOTA FINAL (RODAPÉ DESCRITIVO) ===== */
+  .nota-final {
+    margin-top: 2rem;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    box-shadow: var(--shadow);
+  }
+  .nota-final strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .nota-final-titulo {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
   .imagem-box {
     text-align: center;
     padding: 1.5rem;
@@ -549,6 +575,18 @@
     .observacao-num { width: 18px !important; height: 18px !important; font-size: 8pt !important; }
     .observacao-texto { font-size: 7pt !important; line-height: 1.15 !important; }
     .observacao-item.destaque { background: #fee2e2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+     .nota-final {
+      background: #f0f0f0 !important;
+      border: 1px solid #999 !important;
+      border-left: 3px solid #1d4ed8 !important;
+      padding: 4px 8px !important;
+      font-size: 6.5pt !important;
+      line-height: 1.2 !important;
+      box-shadow: none !important;
+      page-break-inside: avoid !important;
+      margin-top: 6px !important;
+    }
+    .nota-final-titulo { font-size: 6pt !important; margin-bottom: 2px !important; }
   }
 </style>
 </head>
@@ -726,7 +764,10 @@
         </div>
       </div>
     </div>
-
+    <div class="nota-final">
+      <span class="nota-final-titulo">Sobre este documento</span>
+      Documento de planejamento estratégico específico da parceria com a Evolucional para 2027, desenhado com 3 modelagens de aplicação para a 3ª série do Ensino Médio e informações complementares de aplicações para o 9º ano do EF e para as 1ª e 2ª séries do EM. O cronograma respeita a base padrão de 4 ciclos de avaliação e as particularidades de cada colégio, e as regras de aplicação e a alocação dos ciclos foram definidas para otimizar a aplicação das avaliações. Em caso de dúvidas, entre em contato com o <strong>Setor de Escolas - CI</strong>.
+    </div>
   </div>
 </div>
 
@@ -799,7 +840,10 @@
         </div>
       </div>
     </div>
-
+    <div class="nota-final">
+      <span class="nota-final-titulo">Sobre este documento</span>
+      Documento de planejamento estratégico específico da parceria com a Evolucional para 2027, desenhado com 3 modelagens de aplicação para a 3ª série do Ensino Médio e informações complementares de aplicações para o 9º ano do EF e para as 1ª e 2ª séries do EM. O cronograma respeita a base padrão de 4 ciclos de avaliação e as particularidades de cada colégio, e as regras de aplicação e a alocação dos ciclos foram definidas para otimizar a aplicação das avaliações. Em caso de dúvidas, entre em contato com o <strong>Setor de Escolas - CI</strong>.
+    </div>
   </div>
   <!-- ===== FIM ABA 2 ===== -->
 
