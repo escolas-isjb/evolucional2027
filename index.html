@@ -31,18 +31,16 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    line-height: 0;      /* remove espaço extra abaixo da imagem */
+    line-height: 0;        /* remove o espaço fantasma do inline */
   }
   .banner-institucional img {
     display: block;
     width: 100%;
     max-width: 1920px;
-    height: 140px;
-    object-fit: cover;
-    object-position: center;
+    height: auto;          /* respeita a proporção original */
   }
   @media (max-width: 768px) {
-    .banner-institucional img { height: 90px; }
+    .banner-institucional img { height: auto; }
   }
   
   @media (max-width: 768px) {
@@ -870,13 +868,6 @@
     <div class="section-title-wrap">
       <h3 class="section-title">3. Cronograma Oficial Evolucional</h3>
       <span class="section-caption">Padrão de aplicação 9º, 1ª e 2ª série — clique na imagem para ampliar</span>
-    </div>
-
-    <div class="imagem-box" style="margin-bottom: 2.5rem;">
-      <img src="evolucional-oficial.png"
-           alt="Cronograma oficial Evolucional 9º, 1ª e 2ª série"
-           onclick="abrirLightbox()">
-      <p class="dica-zoom">🔍 Clique na imagem para ampliar</p>
     </div>
 
     <!-- NOTA FINAL - ABA 2 -->
