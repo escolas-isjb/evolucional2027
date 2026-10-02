@@ -31,22 +31,18 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    line-height: 0;      /* remove espaço extra abaixo da imagem */
   }
   .banner-institucional img {
     display: block;
     width: 100%;
     max-width: 1920px;
-    height: 140px;          /* altura fixa do banner */
-    object-fit: cover;      /* corta as bordas sem distorcer */
+    height: 140px;
+    object-fit: cover;
     object-position: center;
   }
-    .banner-institucional {
-    width: 100%;
-    background: #ffffff;   /* ou a cor de fundo do site */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  @media (max-width: 768px) {
+    .banner-institucional img { height: 90px; }
   }
   
   @media (max-width: 768px) {
@@ -626,9 +622,6 @@
   <img src="banner-informa.png" alt="Educacional Informa — Salesianos Inspetoria São João Bosco">
 </div>
 
-<header class="header-banner">
-
-<header class="header-banner">
 <header class="header-banner">
   <div class="header-content">
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 100%;">
