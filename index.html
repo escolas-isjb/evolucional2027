@@ -36,8 +36,19 @@
     display: block;
     width: 100%;
     max-width: 1920px;
-    height: auto;
+    height: 140px;          /* altura fixa do banner */
+    object-fit: cover;      /* corta as bordas sem distorcer */
+    object-position: center;
   }
+    .banner-institucional {
+    width: 100%;
+    background: #ffffff;   /* ou a cor de fundo do site */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
   @media (max-width: 768px) {
     .banner-institucional img { width: 100%; height: auto; }
   }
