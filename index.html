@@ -23,6 +23,24 @@
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
+    /* ===== BANNER INSTITUCIONAL (TOPO) ===== */
+  .banner-institucional {
+    width: 100%;
+    background: #1e3a8a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .banner-institucional img {
+    display: block;
+    width: 100%;
+    max-width: 1920px;
+    height: auto;
+  }
+  @media (max-width: 768px) {
+    .banner-institucional img { width: 100%; height: auto; }
+  }
   .header-banner {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e3a8a 100%);
     color: #ffffff;
@@ -592,6 +610,14 @@
 </head>
 <body>
 
+<!-- ===== BANNER INSTITUCIONAL ===== -->
+<div class="banner-institucional no-print">
+  <img src="banner-informa.png" alt="Educacional Informa — Salesianos Inspetoria São João Bosco">
+</div>
+
+<header class="header-banner">
+
+<header class="header-banner">
 <header class="header-banner">
   <div class="header-content">
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 100%;">
@@ -769,7 +795,6 @@
       Documento de planejamento estratégico específico da parceria com a Evolucional para 2027, desenhado com 3 modelagens de aplicação para a 3ª série do Ensino Médio e informações complementares de aplicações para o 9º ano do EF e para as 1ª e 2ª séries do EM. O cronograma respeita a base padrão de 4 ciclos de avaliação e as particularidades de cada colégio, e as regras de aplicação e a alocação dos ciclos foram definidas para otimizar a aplicação das avaliações. Em caso de dúvidas, entre em contato com o <strong>Setor de Escolas - CI</strong>.
     </div>
   </div>
-</div>
 
 <!-- ===== ABA 2: 9º, 1ª E 2ª SÉRIE ===== -->
   <div id="oficial" class="tab-content">
@@ -781,7 +806,6 @@
     </div>
 
        <div class="card-panel" style="margin-bottom: 2.5rem;">
-          <div class="card-panel" style="margin-bottom: 2.5rem;">
       <table style="table-layout: fixed;">
         <colgroup>
           <col style="width: 28%;">
@@ -813,7 +837,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
     </div>
 
     <!-- 2. Observações Gerais (era o 3) -->
@@ -860,8 +883,6 @@
 
   </div>
   <!-- ===== FIM ABA 2 ===== -->
-
-<!-- ===== LIGHTBOX (IMAGEM AMPLIADA) ===== -->
 
 <!-- ===== PAINEL LATERAL DE COLÉGIOS ===== -->
 <div id="painelOverlay" class="painel-overlay" onclick="fecharPainel()"></div>
